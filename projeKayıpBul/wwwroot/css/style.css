@@ -351,7 +351,7 @@ button {
 
 .overly:before {
   content: '';
-  background: rgba(0, 0, 0, 0.51);
+  background: rgba(0, 0, 0, 0.69);
   position: absolute;
   top: 0;
   left: 0;
@@ -930,11 +930,11 @@ ul.pagination .active a {
 }
 
 .short-popular-category-list ul li a {
-  border: 1px solid #404040;
-  color: #c1c1c1;
-  font-weight: 200;
-  padding: 4px 10px;
-  font-size: 12px;
+    border: 1.6px solid #a9a7a7;
+    color: #fff;
+    font-weight: 200;
+    padding: 4px 10px;
+    font-size: 12px;
 }
 
 .short-popular-category-list ul li a i {

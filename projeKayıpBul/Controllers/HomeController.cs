@@ -23,12 +23,7 @@ namespace projeKayıpBul.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public IActionResult Register()
+        public IActionResult Contact()
         {
             return View();
         }

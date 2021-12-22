@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\projekt\\projeKayıpBul\\projeKayıpBul\\projeKayıpBul.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\projekt\\Github\\webProje_KayipBul\\projeKayıpBul\\projeKayıpBul.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\projekt\\projeKayıpBul\\projeKayıpBul\\projeKayıpBul.csproj": {
+    "C:\\Users\\Admin\\Desktop\\projekt\\Github\\webProje_KayipBul\\projeKayıpBul\\projeKayıpBul.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\projekt\\projeKayıpBul\\projeKayıpBul\\projeKayıpBul.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\projekt\\Github\\webProje_KayipBul\\projeKayıpBul\\projeKayıpBul.csproj",
         "projectName": "projeKayıpBul",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\projekt\\projeKayıpBul\\projeKayıpBul\\projeKayıpBul.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\projekt\\Github\\webProje_KayipBul\\projeKayıpBul\\projeKayıpBul.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\projekt\\projeKayıpBul\\projeKayıpBul\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\projekt\\Github\\webProje_KayipBul\\projeKayıpBul\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,19 +46,21 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.11, )"
+              "version": "[5.0.12, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[5.0.11, )"
+              "version": "[5.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.11, )"
+              "version": "[5.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.11, )"
+              "version": "[5.0.12, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
