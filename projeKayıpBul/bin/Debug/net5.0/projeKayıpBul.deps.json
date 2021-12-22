@@ -319,6 +319,14 @@
         "runtime": {
           "projeKayıpBul.dll": {}
         },
+        "resources": {
+          "en-US/projeKayıpBul.resources.dll": {
+            "locale": "en-US"
+          },
+          "tr-TR/projeKayıpBul.resources.dll": {
+            "locale": "tr-TR"
+          }
+        },
         "compile": {
           "projeKayıpBul.dll": {}
         }

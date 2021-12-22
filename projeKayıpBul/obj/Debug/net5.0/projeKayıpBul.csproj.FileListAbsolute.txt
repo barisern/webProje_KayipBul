@@ -335,3 +335,11 @@ C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\LostItems\Details.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\LostItems\Edit.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\LostItems\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\bin\Debug\net5.0\en-US\projeKayıpBul.resources.dll
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\bin\Debug\net5.0\tr-TR\projeKayıpBul.resources.dll
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.resources
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.en-US.resources
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.tr-TR.resources
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\en-US\projeKayıpBul.resources.dll
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\tr-TR\projeKayıpBul.resources.dll
