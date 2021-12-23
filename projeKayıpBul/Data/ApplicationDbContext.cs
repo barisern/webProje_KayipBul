@@ -14,6 +14,7 @@ namespace projeKayıpBul.Data
         public DbSet<LostItem> LostItem { get; set; }
         public DbSet<SocialMedia> SocialMedia { get; set; }
         public DbSet<Contact> Contact { get; set; }
+        public DbSet<Comments> Comments { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

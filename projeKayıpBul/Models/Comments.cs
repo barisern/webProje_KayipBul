@@ -15,7 +15,7 @@ namespace projeKayıpBul.Models
         [ForeignKey("UserId")]
         public ApplicationUser ApplicationUser { get; set; }
 
-        public string LostItemId { get; set; }
+        public int LostItemId { get; set; }
         [ForeignKey("LostItemId")]
         public LostItem LostItem { get; set; }
     }
