@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace projeKayıpBul.Models
 
         public string Address { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime LosingDate { get; set; }
 
         public MoreInfo MoreInfo { get; set; }
@@ -35,6 +37,7 @@ namespace projeKayıpBul.Models
 
     public enum MoreInfo
     {
+        None,
         Rewarded,
         Urgent
     }

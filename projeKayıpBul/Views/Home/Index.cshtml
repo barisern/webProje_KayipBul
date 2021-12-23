@@ -1,4 +1,6 @@
-﻿@{
+﻿@model projeKayıpBul.Models.ViewModels.HomeViewModel
+
+@{
     ViewData["Title"] = "Ana Sayfa";
 }
 
@@ -16,62 +18,15 @@
                     <div class="short-popular-category-list text-center">
                         <h2>Kategoriler</h2>
                         <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-dog"></i> Dog</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-cat"></i> Cat</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-dove"></i> Bird</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-crow"></i> Parrot</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-car"></i> Car</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-motorcycle"></i> Motorcycle </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-bicycle"></i> Bike</a>
-                            </li>
+                            @foreach (var item in Model.Category)
+                            {
+                                <li class="list-inline-item">
+                                    <a href="category.html"><i class="@item.IconName"></i> @item.Name</a>
+                                </li>
+                            }
                         </ul>
                     </div>
-
                 </div>
-                <!-- Advance Search -->
-                <div class="advance-search">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12 col-md-12 align-content-center">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="Anahtar kelime ara">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <select class="w-100 form-control mt-lg-1 mt-md-2">
-                                                <option>Kategori</option>
-                                                <option value="1">Top rated</option>
-                                                <option value="2">Lowest Price</option>
-                                                <option value="4">Highest Price</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <input type="text" class="form-control my-2 my-lg-1" id="inputLocation4" placeholder="Lokasyon">
-                                        </div>
-                                        <div class="form-group col-md-2 align-self-center">
-                                            <button type="submit" class="btn btn-primary w-100">Ara</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -93,256 +48,57 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="trending-ads-slide">
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">11inch Macbook Air</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Tech
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
+                    @foreach (var item in Model.LostCats)
+                    {
+                        <div class="col-sm-12 col-lg-3">
+                            <div class="product-item bg-light">
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <!--<div class="price">asd</div> -->
+                                        @if (item.MoreInfo == MoreInfo.Urgent)
+                                        {<div class="kayip">ACİL</div>}
+                                        @if (item.MoreInfo == MoreInfo.Rewarded)
+                                        {<div class="kayip">ÖDÜLLÜ</div>}
+                                        <a href="single.html">
+                                            @if (item.Photo == null)
+                                            {
+                                                <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
+                                            }
+                                            else
+                                            {
+                                                var base64 = Convert.ToBase64String(item.Photo);
+                                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+
+                                                <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
+                                            }
+
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="single.html">@item.Name</a>
+                                        </h4>
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <a href="single.html">
+                                                    <i class="fa fa-folder-open-o"></i>@item.Category.Name
+                                                </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
+                                                <a href="#">
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate
+                                                </a>
                                             </li>
                                         </ul>
+                                        <p class="card-text">@item.Description.Substring(0, 80)...</p>
+                                        <div class="product-ratings">
+                                            <button class="btn btn-primary">Detaylı Bilgi</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">Full Study Table Combo</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Furnitures
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">11inch Macbook Air</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Tech
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">Full Study Table Combo</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Furnitures
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">Full Study Table Combo</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Furnitures
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -360,257 +116,58 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="trending-ads-slide">
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!--<div class="price">$200</div> -->
-                                    <!--<div class="kayip">KAYIP</div> -->
+                    <!-- product card -->
+                    @foreach (var item in Model.LostDogs)
+                    {
+                        <div class="col-sm-12 col-lg-3">
+                            <div class="product-item bg-light">
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <!--<div class="price">asd</div> -->
+                                        @if (item.MoreInfo == MoreInfo.Urgent)
+                                        {<div class="kayip">ACİL</div>}
+                                        @if (item.MoreInfo == MoreInfo.Rewarded)
+                                        {<div class="kayip">ÖDÜLLÜ</div>}
                                     <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+                                        @if (item.Photo == null)
+                                        {
+                                            <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
+                                        }
+                                        else
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Photo);
+                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+
+                                            <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
+                                        }
+
                                     </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">11inch Macbook Air</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Tech
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="single.html">@item.Name</a>
+                                        </h4>
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <a href="single.html">
+                                                    <i class="fa fa-folder-open-o"></i>@item.Category.Name
+                                                </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
+                                                <a href="#">
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate
+                                                </a>
                                             </li>
                                         </ul>
+                                        <p class="card-text">@item.Description.Substring(0, 80)...</p>
+                                        <div class="product-ratings">
+                                            <button class="btn btn-primary">Detaylı Bilgi</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">Full Study Table Combo</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Furnitures
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">11inch Macbook Air</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Tech
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">Full Study Table Combo</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Furnitures
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="single.html">Full Study Table Combo</a>
-                                    </h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html">
-                                                <i class="fa fa-folder-open-o"></i>Furnitures
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-calendar"></i>26th December
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item selected">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -645,141 +202,71 @@
 
 <section class="section">
     <!-- Container Start -->
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
-            <div class="col-12">
-                <!-- Section title -->
+            <div class="col-md-12">
                 <div class="section-title">
-                    <h2>All Categories</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
+                    <h2><i class="fa fa-star"></i> - Son Bulunanlar</h2>
+                    <p>Burada bulumuş durumdaki ilanları görebilirsiniz.</p>
                 </div>
-                <div class="row">
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-laptop icon-bg-1"></i>
-                                <h4>Electronics</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Laptops <span>93</span></a></li>
-                                <li><a href="category.html">Iphone <span>233</span></a></li>
-                                <li><a href="category.html">Microsoft  <span>183</span></a></li>
-                                <li><a href="category.html">Monitors <span>343</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-apple icon-bg-2"></i>
-                                <h4>Restaurants</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Cafe <span>393</span></a></li>
-                                <li><a href="category.html">Fast food <span>23</span></a></li>
-                                <li><a href="category.html">Restaurants  <span>13</span></a></li>
-                                <li><a href="category.html">Food Track<span>43</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-home icon-bg-3"></i>
-                                <h4>Real Estate</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Farms <span>93</span></a></li>
-                                <li><a href="category.html">Gym <span>23</span></a></li>
-                                <li><a href="category.html">Hospitals  <span>83</span></a></li>
-                                <li><a href="category.html">Parolurs <span>33</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-shopping-basket icon-bg-4"></i>
-                                <h4>Shoppings</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Mens Wears <span>53</span></a></li>
-                                <li><a href="category.html">Accessories <span>212</span></a></li>
-                                <li><a href="category.html">Kids Wears <span>133</span></a></li>
-                                <li><a href="category.html">It & Software <span>143</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-briefcase icon-bg-5"></i>
-                                <h4>Jobs</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">It Jobs <span>93</span></a></li>
-                                <li><a href="category.html">Cleaning & Washing <span>233</span></a></li>
-                                <li><a href="category.html">Management  <span>183</span></a></li>
-                                <li><a href="category.html">Voluntary Works <span>343</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-car icon-bg-6"></i>
-                                <h4>Vehicles</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Bus <span>193</span></a></li>
-                                <li><a href="category.html">Cars <span>23</span></a></li>
-                                <li><a href="category.html">Motobike  <span>33</span></a></li>
-                                <li><a href="category.html">Rent a car <span>73</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
-                            <div class="header">
-                                <i class="fa fa-paw icon-bg-7"></i>
-                                <h4>Pets</h4>
-                            </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Cats <span>65</span></a></li>
-                                <li><a href="category.html">Dogs <span>23</span></a></li>
-                                <li><a href="category.html">Birds  <span>113</span></a></li>
-                                <li><a href="category.html">Others <span>43</span></a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                        <div class="category-block">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="trending-ads-slide">
+                    @foreach (var item in Model.LostButFound)
+                    {
+                        <div class="col-sm-12 col-lg-3">
+                            <div class="product-item bg-light">
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <!--<div class="price">asd</div> -->
+                                        @if (item.MoreInfo == MoreInfo.Urgent)
+                                        {<div class="kayip">ACİL</div>}
+                                        @if (item.MoreInfo == MoreInfo.Rewarded)
+                                        {<div class="kayip">ÖDÜLLÜ</div>}
+                                        <a href="single.html">
+                                            @if (item.Photo == null)
+                                            {
+                                                <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
+                                            }
+                                            else
+                                            {
+                                                var base64 = Convert.ToBase64String(item.Photo);
+                                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
 
-                            <div class="header">
-                                <i class="fa fa-laptop icon-bg-8"></i>
-                                <h4>Services</h4>
+                                                <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
+                                            }
+
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="single.html">@item.Name</a>
+                                        </h4>
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <a href="single.html">
+                                                    <i class="fa fa-folder-open-o"></i>@item.Category.Name
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#">
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <p class="card-text">@item.Description.Substring(0, 80)...</p>
+                                        <div class="product-ratings">
+                                            <button class="btn btn-primary">Detaylı Bilgi</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <ul class="category-list">
-                                <li><a href="category.html">Cleaning <span>93</span></a></li>
-                                <li><a href="category.html">Car Washing <span>233</span></a></li>
-                                <li><a href="category.html">Clothing  <span>183</span></a></li>
-                                <li><a href="category.html">Business <span>343</span></a></li>
-                            </ul>
                         </div>
-                    </div> <!-- /Category List -->
-
-
+                    }
                 </div>
             </div>
         </div>
     </div>
-    <!-- Container End -->
 </section>

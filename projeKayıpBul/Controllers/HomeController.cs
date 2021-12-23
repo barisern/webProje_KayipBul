@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using projeKayıpBul.Data;
 using projeKayıpBul.Models;
+using projeKayıpBul.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,16 +14,23 @@ namespace projeKayıpBul.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext db)
         {
-            _logger = logger;
+            _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            HomeViewModel HomeVM = new HomeViewModel()
+            {
+                LostCats = await _db.LostItem.Where(x => x.Category.Name == "Kedi").ToListAsync(),
+                LostDogs = await _db.LostItem.Where(x => x.Category.Name == "Köpek").ToListAsync(),
+                LostButFound = await _db.LostItem.Where(x => x.Status == Status.Found).ToListAsync(),
+                Category = await _db.Category.ToListAsync()
+            };
+            return View(HomeVM);
         }
 
         public IActionResult Contact()
