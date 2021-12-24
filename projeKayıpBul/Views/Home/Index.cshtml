@@ -13,10 +13,10 @@
             <div class="col-md-12">
                 <!-- Header Contetnt -->
                 <div class="content-block">
-                    <h1>Kaybolan her şeyinizi bulun! </h1>
-                    <p>KayıpBul'da ücretsiz bir şekilde ilan verin, <br> kaybolan her şeyinizi bulun veya başkalarına yardımcı olun.</p>
+                    <h1>@lang["HeroHead"]</h1>
+                    <p>@lang["HeroInfo1"]<br> @lang["HeroInfo2"]</p>
                     <div class="short-popular-category-list text-center">
-                        <h2>Kategoriler</h2>
+                        <h2>@lang["Categories"]</h2>
                         <ul class="list-inline">
                             @foreach (var item in Model.Category)
                             {
@@ -40,8 +40,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2><i class="fa fa-cat"></i> - Son Kayıp Kediler</h2>
-                    <p>Kayıp kedi ilanlarına tıklayarak detayları görebilirsiniz.</p>
+                    <h2><i class="fa fa-cat"></i> - @lang["LatestCat"]</h2>
+                    <p>@lang["LatestCatInfo"]</p>
                 </div>
             </div>
         </div>
@@ -56,9 +56,9 @@
                                     <div class="thumb-content">
                                         <!--<div class="price">asd</div> -->
                                         @if (item.MoreInfo == MoreInfo.Urgent)
-                                        {<div class="kayip">ACİL</div>}
+                                        {<div class="kayip">@lang["Urgent"]</div>}
                                         @if (item.MoreInfo == MoreInfo.Rewarded)
-                                        {<div class="kayip">ÖDÜLLÜ</div>}
+                                        {<div class="kayip">@lang["Rewarded"]</div>}
                                     <a asp-action="Details" asp-route-id="@item.Id">
                                         @if (item.Photo == null)
                                         {
@@ -92,7 +92,7 @@
                                         </ul>
                                         <p class="card-text">@item.Description.Substring(0, 70)...</p>
                                         <div class="product-ratings">
-                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detaylı Bilgi</a>
+                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">@lang["DetayBilgi"]</a>
                                         </div>
                                     </div>
                                 </div>
@@ -108,8 +108,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2><i class="fa fa-dog"></i> - Son Kayıp Köpekler</h2>
-                    <p>Kayıp köpek ilanlarına tıklayarak detayları görebilirsiniz.</p>
+                    <h2><i class="fa fa-dog"></i> - @lang["LatestDog"]</h2>
+                    <p>@lang["LatestDogInfo"]</p>
                 </div>
             </div>
         </div>
@@ -125,102 +125,9 @@
                                     <div class="thumb-content">
                                         <!--<div class="price">asd</div> -->
                                         @if (item.MoreInfo == MoreInfo.Urgent)
-                                        {<div class="kayip">ACİL</div>}
+                                        {<div class="kayip">@lang["Urgent"]</div>}
                                         @if (item.MoreInfo == MoreInfo.Rewarded)
-                                        {<div class="kayip">ÖDÜLLÜ</div>}
-                                    <a asp-action="Details" asp-route-id="@item.Id">
-                                        @if (item.Photo == null)
-                                        {
-                                            <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
-                                        }
-                                        else
-                                        {
-                                            var base64 = Convert.ToBase64String(item.Photo);
-                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-
-                                            <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
-                                        }
-
-                                    </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="single.html">@item.Name</a>
-                                        </h4>
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href="single.html">
-                                                    <i class="fa fa-folder-open-o"></i>@item.Category.Name
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#">
-                                                    <i class="fa fa-calendar"></i>@item.LosingDate.Date
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <p class="card-text">@item.Description.Substring(0, 70)...</p>
-                                        <div class="product-ratings">
-                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detaylı Bilgi</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Action Section -->
-
-<section class="call-to-action overly bg-3 section-sm">
-    <!-- Container Start -->
-    <div class="container">
-        <div class="row justify-content-md-center text-center">
-            <div class="col-md-8">
-                <div class="content-holder">
-                    <h2>
-                        Ücretsiz ilan Gönder!
-                    </h2>
-                    <p style="font-size: 16px; font-weight: 400; color: #d4cecd">
-                        Kayıt olup profilini düzenledikten sonra ücretsiz bir şekilde ilan gönderebilirsin!
-                    </p>
-                    <ul class="list-inline mt-30">
-                        <li class="list-inline-item"><a class="btn btn-main" asp-area="User" asp-controller="LostItems" asp-action="Create"><i class="fa fa-plus mr-2"></i>Kayıp İlanı Ver</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Container End -->
-</section>
-
-<!-- Kategori Section -->
-
-<section class="section">
-    <!-- Container Start -->
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2><i class="fa fa-star"></i> - Son Bulunanlar</h2>
-                    <p>Burada bulumuş durumdaki ilanları görebilirsiniz.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="trending-ads-slide">
-                    @foreach (var item in Model.LostButFound)
-                    {
-                        <div class="col-sm-12 col-lg-3">
-                            <div class="product-item bg-light">
-                                <div class="card">
-                                    <div class="thumb-content">
-                                        <div class="kayip" style="background-color: green">Bulundu</div>
+                                        {<div class="kayip">@lang["Rewarded"]</div>}
                                         <a asp-action="Details" asp-route-id="@item.Id">
                                             @if (item.Photo == null)
                                             {
@@ -254,7 +161,100 @@
                                         </ul>
                                         <p class="card-text">@item.Description.Substring(0, 70)...</p>
                                         <div class="product-ratings">
-                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detaylı Bilgi</a>
+                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">@lang["DetayBilgi"]</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Action Section -->
+
+<section class="call-to-action overly bg-3 section-sm">
+    <!-- Container Start -->
+    <div class="container">
+        <div class="row justify-content-md-center text-center">
+            <div class="col-md-8">
+                <div class="content-holder">
+                    <h2>
+                        @lang["SendItem"]
+                    </h2>
+                    <p style="font-size: 16px; font-weight: 400; color: #d4cecd">
+                        @lang["SendItem1"]
+                    </p>
+                    <ul class="list-inline mt-30">
+                        <li class="list-inline-item"><a class="btn btn-main" asp-area="User" asp-controller="LostItems" asp-action="Create"><i class="fa fa-plus mr-2"></i>@lang["SendItem2"]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container End -->
+</section>
+
+<!-- Kategori Section -->
+
+<section class="section">
+    <!-- Container Start -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2><i class="fa fa-star"></i> - @lang["LatestFound"]</h2>
+                    <p>@lang["LatestFoundInfo"]</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="trending-ads-slide">
+                    @foreach (var item in Model.LostButFound)
+                    {
+                        <div class="col-sm-12 col-lg-3">
+                            <div class="product-item bg-light">
+                                <div class="card">
+                                    <div class="thumb-content">
+                                        <div class="kayip" style="background-color: green">@lang["Found"]</div>
+                                        <a asp-action="Details" asp-route-id="@item.Id">
+                                            @if (item.Photo == null)
+                                            {
+                                                <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
+                                            }
+                                            else
+                                            {
+                                                var base64 = Convert.ToBase64String(item.Photo);
+                                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+
+                                                <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
+                                            }
+
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="single.html">@item.Name</a>
+                                        </h4>
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <a href="single.html">
+                                                    <i class="fa fa-folder-open-o"></i>@item.Category.Name
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#">
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate.Date
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <p class="card-text">@item.Description.Substring(0, 70)...</p>
+                                        <div class="product-ratings">
+                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">@lang["DetayBilgi"]</a>
                                         </div>
                                     </div>
                                 </div>

@@ -76,7 +76,7 @@ namespace projeKayıpBul
             }
 
             var supportedCultures = new[]
-{
+            {
                 new CultureInfo("tr-TR"),
                 new CultureInfo("en-Us")
 
@@ -105,6 +105,7 @@ namespace projeKayıpBul
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("api", "api/{controller}/{id?}");
             });
         }
     }

@@ -326,13 +326,10 @@ C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\bin\Debug\net5.0\en-US\projeKayıpBul.resources.dll
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\bin\Debug\net5.0\tr-TR\projeKayıpBul.resources.dll
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.resources
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.en-US.resources
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.tr-TR.resources
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.csproj.GenerateResource.cache
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\en-US\projeKayıpBul.resources.dll
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\tr-TR\projeKayıpBul.resources.dll
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Contacts\Create.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Contacts\Delete.cshtml.g.cs
@@ -356,3 +353,6 @@ C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Details.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Edit.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\bin\Debug\net5.0\tr-TR\projeKayıpBul.resources.dll
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\projeKayıpBul.Resources.lang.tr-TR.resources
+C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\tr-TR\projeKayıpBul.resources.dll

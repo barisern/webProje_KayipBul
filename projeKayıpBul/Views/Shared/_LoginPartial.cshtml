@@ -6,21 +6,23 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link login-button" href="#"><i class="fa fa-user mr-2"></i>Hello @User.Identity.Name.Split('@')[0]!</a>
+            <a class="nav-link login-button" href="#"><i class="fa fa-user mr-2"></i>@lang["Hello"] @User.Identity.Name.Split('@')[0]!</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link login-button"><i class="fa fa-sign-out mr-2"></i>Logout</button>
+                <button type="submit" class="nav-link login-button"><i class="fa fa-sign-out mr-2"></i>@lang["Logout"]</button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link login-button" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-user mr-2"></i>Login</a>
+            <a class="nav-link login-button" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-user mr-2"></i>@lang["Login"]</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link login-button" asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus mr-2"></i>Register</a>
+            <a class="nav-link login-button" asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus mr-2"></i>@lang["Register"]</a>
         </li>
     }
+    <a asp-route-culture="tr-TR">TR</a>
+    <a asp-route-culture="en-Us" style="margin-left: 5px">EN</a>
 </ul>
