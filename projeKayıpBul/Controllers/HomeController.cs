@@ -37,9 +37,23 @@ namespace projeKayıpBul.Controllers
         {
             return View();
         }
-        public IActionResult Details()
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var lostItem = await _db.LostItem
+                .Include(l => l.ApplicationUser)
+                .Include(l => l.Category)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (lostItem == null)
+            {
+                return NotFound();
+            }
+
+            return View(lostItem);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

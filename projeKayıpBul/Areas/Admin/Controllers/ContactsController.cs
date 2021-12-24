@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using projeKayıpBul.Models;
 namespace projeKayıpBul.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ContactsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,12 +23,14 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Contact.ToListAsync());
         }
 
         // GET: Admin/Contacts/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,6 +49,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +60,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> Create([Bind("Id,Subject,Name,Email,Message")] Contact contact)
         {
             if (ModelState.IsValid)
@@ -67,6 +73,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,6 +94,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Subject,Name,Email,Message")] Contact contact)
         {
             if (id != contact.Id)
@@ -118,6 +126,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -138,6 +147,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         // POST: Admin/Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var contact = await _context.Contact.FindAsync(id);

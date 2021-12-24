@@ -21,7 +21,7 @@
                             @foreach (var item in Model.Category)
                             {
                                 <li class="list-inline-item">
-                                    <a href="category.html"><i class="@item.IconName"></i> @item.Name</a>
+                                    <a href="#"><i class="@item.IconName"></i> @item.Name</a>
                                 </li>
                             }
                         </ul>
@@ -59,20 +59,20 @@
                                         {<div class="kayip">ACİL</div>}
                                         @if (item.MoreInfo == MoreInfo.Rewarded)
                                         {<div class="kayip">ÖDÜLLÜ</div>}
-                                        <a href="single.html">
-                                            @if (item.Photo == null)
-                                            {
-                                                <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
-                                            }
-                                            else
-                                            {
-                                                var base64 = Convert.ToBase64String(item.Photo);
-                                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <a asp-action="Details" asp-route-id="@item.Id">
+                                        @if (item.Photo == null)
+                                        {
+                                            <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
+                                        }
+                                        else
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Photo);
+                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
 
-                                                <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
-                                            }
+                                            <img class="card-img-top img-fluid" style="height:200px;" src="@imgsrc" />
+                                        }
 
-                                        </a>
+                                    </a>
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -86,13 +86,13 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <i class="fa fa-calendar"></i>@item.LosingDate
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate.Date
                                                 </a>
                                             </li>
                                         </ul>
-                                        <p class="card-text">@item.Description.Substring(0, 80)...</p>
+                                        <p class="card-text">@item.Description.Substring(0, 70)...</p>
                                         <div class="product-ratings">
-                                            <button class="btn btn-primary">Detaylı Bilgi</button>
+                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detaylı Bilgi</a>
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                         {<div class="kayip">ACİL</div>}
                                         @if (item.MoreInfo == MoreInfo.Rewarded)
                                         {<div class="kayip">ÖDÜLLÜ</div>}
-                                    <a href="single.html">
+                                    <a asp-action="Details" asp-route-id="@item.Id">
                                         @if (item.Photo == null)
                                         {
                                             <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
@@ -155,13 +155,13 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <i class="fa fa-calendar"></i>@item.LosingDate
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate.Date
                                                 </a>
                                             </li>
                                         </ul>
-                                        <p class="card-text">@item.Description.Substring(0, 80)...</p>
+                                        <p class="card-text">@item.Description.Substring(0, 70)...</p>
                                         <div class="product-ratings">
-                                            <button class="btn btn-primary">Detaylı Bilgi</button>
+                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detaylı Bilgi</a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                         Kayıt olup profilini düzenledikten sonra ücretsiz bir şekilde ilan gönderebilirsin!
                     </p>
                     <ul class="list-inline mt-30">
-                        <li class="list-inline-item"><a class="btn btn-main" href="#"><i class="fa fa-plus mr-2"></i>Kayıp İlanı Ver</a></li>
+                        <li class="list-inline-item"><a class="btn btn-main" asp-area="User" asp-controller="LostItems" asp-action="Create"><i class="fa fa-plus mr-2"></i>Kayıp İlanı Ver</a></li>
                     </ul>
                 </div>
             </div>
@@ -220,12 +220,8 @@
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!--<div class="price">asd</div> -->
-                                        @if (item.MoreInfo == MoreInfo.Urgent)
-                                        {<div class="kayip">ACİL</div>}
-                                        @if (item.MoreInfo == MoreInfo.Rewarded)
-                                        {<div class="kayip">ÖDÜLLÜ</div>}
-                                        <a href="single.html">
+                                        <div class="kayip" style="background-color: green">Bulundu</div>
+                                        <a asp-action="Details" asp-route-id="@item.Id">
                                             @if (item.Photo == null)
                                             {
                                                 <img class="card-img-top img-fluid" style="height:200px;" src="~/images/resimyok.png" />
@@ -252,13 +248,13 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <i class="fa fa-calendar"></i>@item.LosingDate
+                                                    <i class="fa fa-calendar"></i>@item.LosingDate.Date
                                                 </a>
                                             </li>
                                         </ul>
-                                        <p class="card-text">@item.Description.Substring(0, 80)...</p>
+                                        <p class="card-text">@item.Description.Substring(0, 70)...</p>
                                         <div class="product-ratings">
-                                            <button class="btn btn-primary">Detaylı Bilgi</button>
+                                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detaylı Bilgi</a>
                                         </div>
                                     </div>
                                 </div>

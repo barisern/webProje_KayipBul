@@ -27,6 +27,7 @@ namespace projeKayıpBul.Areas.User.Controllers
         // GET: User/LostItems
         public async Task<IActionResult> Index()
         {
+            ViewData["UserId"] = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var applicationDbContext = _context.LostItem.Include(l => l.ApplicationUser).Include(l => l.Category);
             return View(await applicationDbContext.ToListAsync());
         }

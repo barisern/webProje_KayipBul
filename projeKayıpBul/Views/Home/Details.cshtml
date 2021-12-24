@@ -1,77 +1,59 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@model projeKayıpBul.Models.LostItem
 
 <section class="blog single-blog section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-12">
                 <article class="single-post">
-                    <h2>Donec id dolor in erat imperdiet.</h2>
+                    <h2>@Html.DisplayFor(model => model.Name)</h2>
                     <ul class="list-inline">
-                        <li class="list-inline-item">by <a href="">Admin</a></li>
-                        <li class="list-inline-item">Nov 22, 2016</li>
+                        <li class="list-inline-item">by <a href="">@Html.DisplayFor(model => model.ApplicationUser.NameSurname)</a></li>
+                        <li class="list-inline-item">@Html.DisplayFor(model => model.LosingDate)</li>
                     </ul>
-                    <img src="~/images/blog/post-4.jpg" alt="article-01">
-                    <h3 class="tab-title">Description</h3>
+                    @if (Model.Photo == null)
+                    {
+                        <img style='width:600px; height:400px; border:solid 1px #cccccc;' src="~/images/resimyok.png" alt="" />
+                    }
+                    else
+                    {
+                        var base64 = Convert.ToBase64String(Model.Photo);
+                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+
+                        <img style='width:600px; height:400px; border:solid 1px #cccccc;' src="@imgsrc" />
+                    }
+                    <h3 class="tab-title">@Html.DisplayNameFor(model => model.Description)</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        @Html.DisplayFor(model => model.Description)
                     </p>
 
                     <h3 class="tab-title">Details</h3>
                     <table class="table table-bordered product-table">
                         <tbody>
                             <tr>
-                                <td>Address</td>
-                                <td>Yeşil Mahallesi - Nazilli / Aydin</td>
+                                <td>@Html.DisplayNameFor(model => model.Address)</td>
+                                <td>@Html.DisplayFor(model => model.Address)</td>
                             </tr>
                             <tr>
-                                <td>Lose Date</td>
-                                <td>22 December 2021</td>
+                                <td>@Html.DisplayNameFor(model => model.LosingDate)</td>
+                                <td>@Html.DisplayFor(model => model.LosingDate)</td>
                             </tr>
                             <tr>
-                                <td>Tags</td>
-                                <td>Rewarded</td>
+                                <td>@Html.DisplayNameFor(model => model.MoreInfo)</td>
+                                <td>@Html.DisplayFor(model => model.MoreInfo)</td>
                             </tr>
                             <tr>
-                                <td>Status</td>
-                                <td>Not Found</td>
+                                <td>@Html.DisplayNameFor(model => model.Status)</td>
+                                <td>@Html.DisplayFor(model => model.Status)</td>
                             </tr>
                             <tr>
-                                <td>Condition</td>
-                                <td>Used</td>
-                            </tr>
-                            <tr>
-                                <td>Category</td>
-                                <td>Cat</td>
+                                <td>@Html.DisplayNameFor(model => model.Category)</td>
+                                <td>@Html.DisplayFor(model => model.Category.Name)</td>
                             </tr>
                         </tbody>
                     </table>
-
                     <button class="btn btn-primary">I know where is it</button>
                 </article>
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <div class="block comment">
-                        <h4>Leave A Comment</h4>
-                        <form action="#">
-                            <!-- Message -->
-                            <div class="form-group mb-30">
-                                <label for="message">Message</label>
-                                <textarea class="form-control" id="message" rows="8"></textarea>
-                            </div>
-                            <button class="btn btn-transparent">Leave Comment</button>
-                        </form>
-                    </div>
-                }
-                else
-                {
-                    <div class="block comment">
-                        Login to add comment.
-                    </div>
-                        }
-                    </div>
-                </div>
+            </div>
+        </div>
     </div>
 </section>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using projeKayıpBul.Models;
 namespace projeKayıpBul.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class LostItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -51,7 +53,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
         // GET: Admin/LostItems/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.ApplicationUser, "Id", "NameSurname");
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             return View();
         }
@@ -102,7 +104,7 @@ namespace projeKayıpBul.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.ApplicationUser, "Id", "Id", lostItem.UserId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUser, "Id", "NameSurname", lostItem.UserId);
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", lostItem.CategoryId);
             return View(lostItem);
         }

@@ -339,11 +339,6 @@ C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Contacts\Details.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Contacts\Edit.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Contacts\Index.cshtml.g.cs
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Comments\Create.cshtml.g.cs
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Comments\Delete.cshtml.g.cs
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Comments\Details.cshtml.g.cs
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Comments\Edit.cshtml.g.cs
-C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\Comments\Index.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\LostItems\Create.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\LostItems\Delete.cshtml.g.cs
 C:\Users\Admin\Desktop\projekt\Github\webProje_KayipBul\projeKayıpBul\obj\Debug\net5.0\Razor\Areas\Admin\Views\LostItems\Details.cshtml.g.cs
