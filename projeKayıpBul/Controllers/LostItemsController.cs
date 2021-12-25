@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,7 @@ namespace projeKayıpBul.Controllers
         // PUT: api/LostItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutLostItem(int id, LostItem lostItem)
         {
             if (id != lostItem.Id)
@@ -75,6 +77,7 @@ namespace projeKayıpBul.Controllers
 
         // POST: api/LostItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<LostItem>> PostLostItem(LostItem lostItem)
         {
@@ -85,6 +88,7 @@ namespace projeKayıpBul.Controllers
         }
 
         // DELETE: api/LostItems/5
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLostItem(int id)
         {

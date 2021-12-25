@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,7 @@ using projeKayıpBul.Models;
 namespace projeKayıpBul.Areas.User.Controllers
 {
     [Area("User")]
+    [Authorize(Roles = "Admin,User")]
     public class LostItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
